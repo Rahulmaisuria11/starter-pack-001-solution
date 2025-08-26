@@ -1,0 +1,60 @@
+services:
+  # flask container
+  api:
+    container_name: api
+    build:
+      context: ./api
+      dockerfile: Dockerfile
+      target: builder
+    stop_signal: SIGINT
+    develop:
+      watch:
+        - action: rebuild
+          path: ./api
+    ports:
+      - '5001:5001'
+    restart: always
+    environment:
+      TESTING: ${TESTING}
+      SECRET_KEY: ${SECRET_KEY}
+      POSTGRESQL_USERNAME: ${POSTGRESQL_USERNAME}
+      POSTGRESQL_PASSWORD: ${POSTGRESQL_PASSWORD}
+      POSTGRESQL_HOST: ${POSTGRESQL_HOST}
+      POSTGRESQL_PORT: ${POSTGRESQL_PORT}
+      POSTGRESQL_DB: ${POSTGRESQL_DB}
+      POSTGRESQL_ARGS: ${POSTGRESQL_ARGS}
+    networks:
+      - starter-pack
+
+  # postgres container
+  db:
+    container_name: psql
+    image: postgres
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_INITDB_ARGS: ${POSTGRES_INITDB_ARGS}
+    ports:
+      - ${POSTGRESQL_PORT}:5432
+    restart: always
+    networks:
+      - starter-pack
+
+  # pgadmin container to connect to our Postgres instance
+  pgadmin:
+    container_name: pgadmin
+    image: dpage/pgadmin4
+    environment:
+      PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL}
+      PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD}
+      PGADMIN_CONFIG_SERVER_MODE: 'False'
+    ports:
+      - ${PGADMIN_PORT}:80
+    restart: unless-stopped
+    networks:
+      - starter-pack
+
+networks:
+  starter-pack:
+    driver: bridge

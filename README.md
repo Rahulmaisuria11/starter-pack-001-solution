@@ -1,6 +1,3 @@
-# starter-pack-001-solution
-starter-pack-001-solution
-
 ## Software required:
 
 - Bruno or Postman for API Testing
