@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Starter-Pack-001</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- CSS only -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+
+</head>
+<body>
+
+<div class="topnav">
+    <a href="{{ url_for('home') }}">Homepage</a>
+</div>
+
+<div class="content">
+    {% block content %}
+        <h1>Homepage</h1>
+    {% endblock %}
+</div>
+
+<div class="footer">
+    <p>Footer</p>
+</div>
+
+</body>
+
+</html>

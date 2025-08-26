@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "starter-pack-001",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}

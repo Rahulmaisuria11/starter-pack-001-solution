@@ -1,0 +1,23 @@
+meta {
+  name: Update Location
+  type: http
+  seq: 4
+}
+
+patch {
+  url: http:\\127.0.0.1:5001\update_location\1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Arquiparque 1",
+    "country": "Portugal",
+    "team": "NS",
+    "engineer_id": {
+      "id": 2,
+      "username": "carlos.tavares"
+    }
+  }
+}

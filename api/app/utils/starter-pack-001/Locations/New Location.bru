@@ -1,0 +1,23 @@
+meta {
+  name: New Location
+  type: http
+  seq: 3
+}
+
+post {
+  url: http:\\127.0.0.1:5001\new_location
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Rome Sciangai",
+    "country": "Italy",
+    "team": "NS",
+    "engineer_id": {
+      "id": 1,
+      "username": "daniel.c.ferreira"
+    }
+  }
+}

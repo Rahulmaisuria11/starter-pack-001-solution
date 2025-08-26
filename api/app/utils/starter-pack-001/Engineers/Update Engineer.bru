@@ -1,0 +1,27 @@
+meta {
+  name: Update Engineer
+  type: http
+  seq: 4
+}
+
+patch {
+  url: http:\\127.0.0.1:5001\update_engineer\1
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Daniel Antonio Ferreira",
+    "username": "daniel.c.ferreira",
+    "email": "daniel.c.ferreira@email.com",
+    "roles": [
+      {
+        "name": "Admin"
+      },
+      {
+        "name": "NS"
+      }
+    ]
+  }
+}

@@ -1,0 +1,24 @@
+meta {
+  name: New Engineer
+  type: http
+  seq: 3
+}
+
+post {
+  url: http:\\127.0.0.1:5001\new_engineer
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "name": "Carlos Tavares",
+    "username": "carlos.tavares",
+    "email": "carlos.tavares@test.com",
+    "roles": [
+      {
+        "name": "NS"
+      }
+    ]
+  }
+}
